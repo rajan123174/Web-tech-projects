@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Scientific Calculator</title>
+
+<style>
+
+body{
+
+text-align:center;
+
+font-family: Arial;
+
+}
+
+input{
+
+width:220px;
+
+height:40px;
+
+font-size:20px;
+
+margin:10px;
+
+}
+
+button{
+
+width:50px;
+
+height:40px;
+
+font-size:18px;
+
+margin:5px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Scientific Calculator</h1>
+
+<nav>
+
+<a href="index.html">Home</a> |
+<a href="about.html">About</a> |
+<a href="projects.html">Projects</a> |
+<a href="contact.html">Contact</a> |
+<a href="calculator.html">Calculator</a>
+
+</nav>
+
+<hr>
+
+<input type="text" id="result">
+
+<br>
+
+<!-- Numbers -->
+
+<button onclick="insert('7')">7</button>
+
+<button onclick="insert('8')">8</button>
+
+<button onclick="insert('9')">9</button>
+
+<button onclick="insert('/')">/</button>
+
+<br>
+
+<button onclick="insert('4')">4</button>
+
+<button onclick="insert('5')">5</button>
+
+<button onclick="insert('6')">6</button>
+
+<button onclick="insert('*')">*</button>
+
+<br>
+
+<button onclick="insert('1')">1</button>
+
+<button onclick="insert('2')">2</button>
+
+<button onclick="insert('3')">3</button>
+
+<button onclick="insert('-')">-</button>
+
+<br>
+
+<button onclick="insert('0')">0</button>
+
+<button onclick="calculate()">=</button>
+
+<button onclick="clearResult()">C</button>
+
+<button onclick="insert('+')">+</button>
+
+<br>
+
+<!-- Scientific Functions -->
+
+<button onclick="sin()">sin</button>
+
+<button onclick="cos()">cos</button>
+
+<button onclick="tan()">tan</button>
+
+<button onclick="sqrt()">√</button>
+
+<br>
+
+<button onclick="power()">x²</button>
+
+</body>
+
+<script>
+
+function insert(value){
+
+document.getElementById("result").value += value;
+
+}
+
+function calculate(){
+
+var x = document.getElementById("result").value;
+
+document.getElementById("result").value = eval(x);
+
+}
+
+function clearResult(){
+
+document.getElementById("result").value="";
+
+}
+
+function sin(){
+
+var x=document.getElementById("result").value;
+
+document.getElementById("result").value=Math.sin(x);
+
+}
+
+function cos(){
+
+var x=document.getElementById("result").value;
+
+document.getElementById("result").value=Math.cos(x);
+
+}
+
+function tan(){
+
+var x=document.getElementById("result").value;
+
+document.getElementById("result").value=Math.tan(x);
+
+}
+
+function sqrt(){
+
+var x=document.getElementById("result").value;
+
+document.getElementById("result").value=Math.sqrt(x);
+
+}
+
+function power(){
+
+var x=document.getElementById("result").value;
+
+document.getElementById("result").value=Math.pow(x,2);
+
+}
+
+</script>
+
+</html>
