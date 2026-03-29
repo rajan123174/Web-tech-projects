@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h2 class="tag">Data Form</h2>
+
+    <div class="card">
+        <h1>Student's Form</h1>
+
+        <form id="studentForm">
+
+            <label>Name:</label>
+            <input type="text" id="name" placeholder="Ace" required>
+
+            <label>Email:</label>
+            <input type="email" id="email" placeholder="example@gmail.com" required>
+
+            <label>Password:</label>
+            <input type="password" id="password" required>
+
+            <label>Confirm Password:</label>
+            <input type="password" id="confirmPassword" required>
+
+            <label>USN:</label>
+            <input type="text" id="usn" placeholder="24BTRXXXX" required>
+
+            <label>Gender:</label>
+            <div class="inline">
+                <label><input type="radio" name="gender" value="Male"> Male</label>
+                <label><input type="radio" name="gender" value="Female"> Female</label>
+            </div>
+
+            <label>Languages:</label>
+            <div class="inline">
+                <label><input type="checkbox" value="HTML"> HTML</label>
+                <label><input type="checkbox" value="CSS"> CSS</label>
+                <label><input type="checkbox" value="JavaScript"> JavaScript</label>
+                <label><input type="checkbox" value="Java"> Java</label>
+                <label><input type="checkbox" value="Python"> Python</label>
+                <label><input type="checkbox" value="Rust"> Rust</label>
+            </div>
+
+            <label>Date of Birth:</label>
+            <input type="date" id="dob" required>
+
+            <label>Description:</label>
+            <textarea id="desc" placeholder="Tell us about yourself..."></textarea>
+
+            <button type="submit">Submit</button>
+
+        </form>
+    </div>
+
+    <!-- TABLE -->
+    <h2 class="tag">Submitted Data</h2>
+
+    <div class="card">
+        <h2>Student's Data</h2>
+
+        <div class="actions">
+            <button onclick="copyTable()">📋 Copy Table</button>
+            <button onclick="exportCSV()">⬇ Export CSV</button>
+        </div>
+
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>USN</th>
+                    <th>Gender</th>
+                    <th>Languages</th>
+                    <th>DOB</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="noData">
+                    <td colspan="8">No submissions yet.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
