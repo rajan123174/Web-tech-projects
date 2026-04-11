@@ -7,11 +7,15 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            max-width: 960px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 24px;
-            line-height: 1.6;
-            background: #f7f9fc;
+            line-height: 1.5;
+            background-color: #f7f9fc;
+            color: #1f2d3d;
+        }
+
+        h1, h2 {
             color: #1f2d3d;
         }
 
@@ -20,55 +24,313 @@
             border: 1px solid #d8e1ea;
             border-radius: 10px;
             padding: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
-        h1, h2 {
-            margin-top: 0;
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
         }
 
-        code {
-            background: #eef3f8;
-            padding: 2px 6px;
-            border-radius: 4px;
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #b8c4d2;
+            border-radius: 6px;
+            box-sizing: border-box;
+            margin-bottom: 8px;
+        }
+
+        textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .error {
+            color: #c62828;
+            font-size: 14px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .success {
+            background: #e8f5e9;
+            color: #1b5e20;
+            border: 1px solid #a5d6a7;
+            padding: 10px 12px;
+            border-radius: 6px;
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        .output {
+            background: #eef5ff;
+            border: 1px solid #bfd4f2;
+            border-radius: 8px;
+            padding: 14px;
+            margin-top: 16px;
+            display: none;
+        }
+
+        button {
+            background: #0b69c7;
+            color: #ffffff;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            cursor: pointer;
         }
 
         a {
             color: #0b69c7;
         }
+
+        .note {
+            background: #fff8e1;
+            border: 1px solid #f0d98a;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 24px;
+        }
+
+        .output p {
+            margin: 6px 0;
+        }
     </style>
 </head>
 <body>
     <h1>Experiment 08</h1>
-    <p>This experiment demonstrates <strong>form handling and form validation using PHP</strong>.</p>
+    <p>Form handling and validation for the Experiment 1 personal contact form and the Experiment 2 customer details form.</p>
 
-    <div class="card">
-        <h2>Why it was downloading</h2>
-        <p>GitHub Pages supports only static files such as <code>.html</code>, <code>.css</code>, and <code>.js</code>. It does not execute <code>.php</code> files, so clicking a PHP file may download it instead of opening it as a web page.</p>
+    <div class="note">
+        <strong>Note:</strong> This page works directly on GitHub Pages using HTML and JavaScript. The PHP version is still available in <code>Experiment_08/index.php</code> for local PHP server use.
     </div>
 
-    <div class="card">
-        <h2>Files in this experiment</h2>
-        <p>The PHP implementation is available in <code>Experiment_08/index.php</code>.</p>
-        <p>This page is a GitHub Pages friendly entry page so the experiment opens properly online.</p>
-    </div>
+    <div class="grid">
+        <section class="card">
+            <h2>Form 1: Personal Contact</h2>
+            <div class="success" id="personal-success">Personal contact form submitted successfully.</div>
+            <form id="personal-form" novalidate>
+                <label for="personal-name">Name</label>
+                <input type="text" id="personal-name" name="name">
+                <span class="error" id="personal-name-error"></span>
 
-    <div class="card">
-        <h2>How to run the PHP form</h2>
-        <p>Run the project on a local PHP server and open the PHP file in your browser.</p>
-        <p>Example:</p>
-        <p><code>cd /Users/rajansmac/Web-tech-projects</code></p>
-        <p><code>php -S localhost:8000</code></p>
-        <p>Then open <code>http://localhost:8000/Experiment_08/index.php</code></p>
-    </div>
+                <label for="personal-email">Email</label>
+                <input type="text" id="personal-email" name="email">
+                <span class="error" id="personal-email-error"></span>
 
-    <div class="card">
-        <h2>What the PHP page contains</h2>
-        <p>It includes two validated forms:</p>
-        <p>1. Personal contact form based on Experiment 1</p>
-        <p>2. Customer details form based on Experiment 2</p>
+                <label for="personal-subject">Subject</label>
+                <input type="text" id="personal-subject" name="subject">
+                <span class="error" id="personal-subject-error"></span>
+
+                <label for="personal-message">Message</label>
+                <textarea id="personal-message" name="message"></textarea>
+                <span class="error" id="personal-message-error"></span>
+
+                <button type="submit">Submit Personal Form</button>
+            </form>
+
+            <div class="output" id="personal-output">
+                <h3>Submitted Data</h3>
+                <p id="personal-output-name"></p>
+                <p id="personal-output-email"></p>
+                <p id="personal-output-subject"></p>
+                <p id="personal-output-message"></p>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Form 2: Customer Details</h2>
+            <div class="success" id="customer-success">Customer details submitted successfully.</div>
+            <form id="customer-form" novalidate>
+                <label for="customer-name">Name</label>
+                <input type="text" id="customer-name" name="name">
+                <span class="error" id="customer-name-error"></span>
+
+                <label for="customer-email">Email</label>
+                <input type="text" id="customer-email" name="email">
+                <span class="error" id="customer-email-error"></span>
+
+                <label for="customer-phone">Phone</label>
+                <input type="text" id="customer-phone" name="phone">
+                <span class="error" id="customer-phone-error"></span>
+
+                <label for="customer-address">Address</label>
+                <textarea id="customer-address" name="address"></textarea>
+                <span class="error" id="customer-address-error"></span>
+
+                <label for="customer-product">Product</label>
+                <select id="customer-product" name="product">
+                    <option value="">Select Product</option>
+                    <option value="Laptop">Laptop</option>
+                    <option value="Mobile">Mobile</option>
+                </select>
+                <span class="error" id="customer-product-error"></span>
+
+                <label for="customer-quantity">Quantity</label>
+                <input type="number" id="customer-quantity" name="quantity" min="1" max="5">
+                <span class="error" id="customer-quantity-error"></span>
+
+                <button type="submit">Submit Customer Form</button>
+            </form>
+
+            <div class="output" id="customer-output">
+                <h3>Submitted Data</h3>
+                <p id="customer-output-name"></p>
+                <p id="customer-output-email"></p>
+                <p id="customer-output-phone"></p>
+                <p id="customer-output-address"></p>
+                <p id="customer-output-product"></p>
+                <p id="customer-output-quantity"></p>
+            </div>
+        </section>
     </div>
 
     <p><a href="../index.html">Back to main experiments</a></p>
+
+    <script>
+        function clearErrors(prefix, fields) {
+            fields.forEach(function(field) {
+                document.getElementById(prefix + '-' + field + '-error').textContent = '';
+            });
+        }
+
+        function setOutput(id, label, value) {
+            document.getElementById(id).textContent = label + ': ' + value;
+        }
+
+        document.getElementById('personal-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var name = document.getElementById('personal-name').value.trim();
+            var email = document.getElementById('personal-email').value.trim();
+            var subject = document.getElementById('personal-subject').value.trim();
+            var message = document.getElementById('personal-message').value.trim();
+            var hasError = false;
+
+            clearErrors('personal', ['name', 'email', 'subject', 'message']);
+            document.getElementById('personal-success').style.display = 'none';
+            document.getElementById('personal-output').style.display = 'none';
+
+            if (name === '') {
+                document.getElementById('personal-name-error').textContent = 'Name is required.';
+                hasError = true;
+            } else if (!/^[a-zA-Z ]+$/.test(name)) {
+                document.getElementById('personal-name-error').textContent = 'Name should contain only letters and spaces.';
+                hasError = true;
+            }
+
+            if (email === '') {
+                document.getElementById('personal-email-error').textContent = 'Email is required.';
+                hasError = true;
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                document.getElementById('personal-email-error').textContent = 'Enter a valid email address.';
+                hasError = true;
+            }
+
+            if (subject === '') {
+                document.getElementById('personal-subject-error').textContent = 'Subject is required.';
+                hasError = true;
+            }
+
+            if (message === '') {
+                document.getElementById('personal-message-error').textContent = 'Message is required.';
+                hasError = true;
+            } else if (message.length < 10) {
+                document.getElementById('personal-message-error').textContent = 'Message must be at least 10 characters long.';
+                hasError = true;
+            }
+
+            if (!hasError) {
+                document.getElementById('personal-success').style.display = 'block';
+                document.getElementById('personal-output').style.display = 'block';
+                setOutput('personal-output-name', 'Name', name);
+                setOutput('personal-output-email', 'Email', email);
+                setOutput('personal-output-subject', 'Subject', subject);
+                setOutput('personal-output-message', 'Message', message);
+                event.target.reset();
+            }
+        });
+
+        document.getElementById('customer-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var name = document.getElementById('customer-name').value.trim();
+            var email = document.getElementById('customer-email').value.trim();
+            var phone = document.getElementById('customer-phone').value.trim();
+            var address = document.getElementById('customer-address').value.trim();
+            var product = document.getElementById('customer-product').value;
+            var quantity = document.getElementById('customer-quantity').value.trim();
+            var hasError = false;
+
+            clearErrors('customer', ['name', 'email', 'phone', 'address', 'product', 'quantity']);
+            document.getElementById('customer-success').style.display = 'none';
+            document.getElementById('customer-output').style.display = 'none';
+
+            if (name === '') {
+                document.getElementById('customer-name-error').textContent = 'Name is required.';
+                hasError = true;
+            } else if (!/^[a-zA-Z ]+$/.test(name)) {
+                document.getElementById('customer-name-error').textContent = 'Name should contain only letters and spaces.';
+                hasError = true;
+            }
+
+            if (email === '') {
+                document.getElementById('customer-email-error').textContent = 'Email is required.';
+                hasError = true;
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                document.getElementById('customer-email-error').textContent = 'Enter a valid email address.';
+                hasError = true;
+            }
+
+            if (phone === '') {
+                document.getElementById('customer-phone-error').textContent = 'Phone number is required.';
+                hasError = true;
+            } else if (!/^[0-9]{10}$/.test(phone)) {
+                document.getElementById('customer-phone-error').textContent = 'Phone number must be 10 digits.';
+                hasError = true;
+            }
+
+            if (address === '') {
+                document.getElementById('customer-address-error').textContent = 'Address is required.';
+                hasError = true;
+            } else if (address.length < 10) {
+                document.getElementById('customer-address-error').textContent = 'Address must be at least 10 characters long.';
+                hasError = true;
+            }
+
+            if (product === '') {
+                document.getElementById('customer-product-error').textContent = 'Please select a product.';
+                hasError = true;
+            }
+
+            if (quantity === '') {
+                document.getElementById('customer-quantity-error').textContent = 'Quantity is required.';
+                hasError = true;
+            } else if (Number(quantity) < 1 || Number(quantity) > 5 || !Number.isInteger(Number(quantity))) {
+                document.getElementById('customer-quantity-error').textContent = 'Quantity must be between 1 and 5.';
+                hasError = true;
+            }
+
+            if (!hasError) {
+                document.getElementById('customer-success').style.display = 'block';
+                document.getElementById('customer-output').style.display = 'block';
+                setOutput('customer-output-name', 'Name', name);
+                setOutput('customer-output-email', 'Email', email);
+                setOutput('customer-output-phone', 'Phone', phone);
+                setOutput('customer-output-address', 'Address', address);
+                setOutput('customer-output-product', 'Product', product);
+                setOutput('customer-output-quantity', 'Quantity', quantity);
+                event.target.reset();
+            }
+        });
+    </script>
 </body>
 </html>
