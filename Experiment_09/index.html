@@ -4,36 +4,269 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Experiment 09</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --bg: #f5f4ff;
+            --card: #ffffff;
+            --line: #ded9fb;
+            --accent: #6f6bd9;
+            --accent-dark: #4e4ab8;
+            --text: #22223b;
+            --muted: #7a7896;
+            --soft: #f8f7ff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(180deg, #f7f5ff 0%, #eef2ff 100%);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .wrap {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 32px 20px 48px;
+        }
+
+        .hero,
+        .panel,
+        .browser-shot {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            box-shadow: 0 18px 40px rgba(82, 78, 160, 0.08);
+        }
+
+        .hero {
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+
+        .eyebrow {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin-top: 0;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            color: var(--muted);
+            margin-bottom: 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .panel {
+            padding: 24px;
+        }
+
+        .note {
+            background: #f3f1ff;
+            border-left: 5px solid var(--accent);
+            color: #4f4c77;
+            padding: 14px 16px;
+            border-radius: 14px;
+            margin-top: 16px;
+        }
+
+        .code {
+            background: #111827;
+            color: #f8fafc;
+            padding: 10px 12px;
+            border-radius: 12px;
+            font-family: monospace;
+            display: inline-block;
+            margin: 6px 0;
+        }
+
+        .browser-shot {
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        .browser-top {
+            background: linear-gradient(90deg, #f7a5ca 0%, #ebb5ff 100%);
+            padding: 12px 16px;
+            border-bottom: 1px solid #eac7f4;
+        }
+
+        .browser-dots {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .browser-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.85);
+        }
+
+        .browser-url {
+            background: rgba(255, 255, 255, 0.78);
+            border-radius: 999px;
+            padding: 10px 14px;
+            font-family: monospace;
+            color: #5c4574;
+            font-size: 14px;
+        }
+
+        .browser-body {
+            padding: 22px;
+            background: var(--soft);
+        }
+
+        .browser-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+        }
+
+        .mini-card {
+            background: #ffffff;
+            border: 1px solid #d9d4fb;
+            border-radius: 18px;
+            padding: 18px;
+            min-height: 180px;
+        }
+
+        .mini-card h3 {
+            color: var(--accent-dark);
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .mini-card p,
+        .mini-card li {
+            color: #5e5a83;
+        }
+
+        .mini-card ul {
+            padding-left: 18px;
+            margin: 0;
+        }
+
+        .caption {
+            border-top: 1px solid #e4def8;
+            padding: 18px 22px 22px;
+            font-size: 15px;
+            color: var(--muted);
+            font-style: italic;
+            background: #fcfbff;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 18px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 26px;
+            }
+
+            .wrap {
+                padding: 20px 14px 40px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Experiment 09</h1>
-    <p>Create, store, retrieve and display the product details for Experiment 2 using PHP and MySQL.</p>
+    <div class="wrap">
+        <section class="hero">
+            <div class="eyebrow">Experiment Overview</div>
+            <h1>Experiment 09</h1>
+            <p>Create, store, retrieve, and display product details for Experiment 02 using PHP and MySQL. This experiment should be opened locally so database operations work correctly.</p>
+            <div class="note">
+                Open the real experiment in localhost using <strong>http://localhost:8000/Experiment_09/index.php</strong>.
+            </div>
+        </section>
 
-    <div class="card">
-        <h2>Files Included</h2>
-        <p><strong>index.php</strong> for storing product details</p>
-        <p><strong>products.php</strong> for retrieving and displaying all products</p>
-        <p><strong>product_details.php</strong> for displaying one selected product</p>
-        <p><strong>setup.sql</strong> for creating the MySQL database and sample records</p>
-        <p><strong>db.php</strong> for database connection</p>
+        <section class="grid">
+            <div class="panel">
+                <div class="eyebrow">How To Run</div>
+                <h2>Run on Localhost</h2>
+                <p>Import the SQL file into MySQL, update the database credentials if needed, then start the PHP server.</p>
+                <div class="code">cd /Users/rajansmac/Web-tech-projects</div><br>
+                <div class="code">php -S localhost:8000</div>
+                <p style="margin-top: 14px;">Then visit:</p>
+                <div class="code">http://localhost:8000/Experiment_09/index.php</div>
+            </div>
+
+            <div class="panel">
+                <div class="eyebrow">Files Included</div>
+                <h2>Main Files</h2>
+                <p><strong>index.php</strong> stores product details.</p>
+                <p><strong>products.php</strong> lists all saved products.</p>
+                <p><strong>product_details.php</strong> shows the selected product details.</p>
+                <p><strong>setup.sql</strong> creates the database structure and sample records.</p>
+                <p><strong>db.php</strong> handles the MySQL connection.</p>
+            </div>
+        </section>
+
+        <div class="eyebrow">Screenshot - Step 1: Product System Running On Localhost</div>
+        <section class="browser-shot">
+            <div class="browser-top">
+                <div class="browser-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="browser-url">localhost:8000/Experiment_09/index.php</div>
+            </div>
+            <div class="browser-body">
+                <div class="browser-grid">
+                    <div class="mini-card">
+                        <h3>Product Entry</h3>
+                        <p>Add and save product information using PHP with MySQL storage in the backend.</p>
+                    </div>
+                    <div class="mini-card">
+                        <h3>Product Display</h3>
+                        <ul>
+                            <li>View all products from the database</li>
+                            <li>Open a single product detail page</li>
+                            <li>Run only when localhost and MySQL are active</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="caption">
+                Fig 9.0 - The database-backed product pages are intended to run on localhost so PHP and MySQL can work together correctly.
+            </div>
+        </section>
+
+        <a class="button" href="../index.html">Back to Main Experiments</a>
     </div>
-
-    <div class="card">
-        <h2>How to Run</h2>
-        <p>1. Create the database by importing <code>setup.sql</code> into MySQL.</p>
-        <p>2. Update database username and password in <code>db.php</code> if needed.</p>
-        <p>3. Run a local PHP server from the project root.</p>
-        <p><code>cd /Users/rajansmac/Web-tech-projects</code></p>
-        <p><code>php -S localhost:8000</code></p>
-        <p>4. Open <code>http://localhost:8000/Experiment_09/index.php</code></p>
-    </div>
-
-    <div class="card">
-        <h2>Why this page is HTML</h2>
-        <p>GitHub Pages does not execute PHP or MySQL. This HTML page opens correctly online, while the actual PHP and MySQL functionality runs locally or on a PHP server.</p>
-    </div>
-
-    <a class="button-link" href="../index.html">Back to Main Experiments</a>
 </body>
 </html>
